@@ -2,8 +2,36 @@ const moodSelect = document.getElementById("mood-select");
 const moodNote = document.getElementById("mood-note");
 const addMoodBtn = document.getElementById("add-mood-btn");
 const moodLog = document.getElementById("mood-log");
+const suggestionBox = document.getElementById("suggestion-box");
 
 let moodEntries = [];
+
+// Motivational suggestions
+const suggestions = {
+  Happy: [
+    "Keep spreading positivity!",
+    "Great job! Celebrate your wins.",
+    "Happiness is contagious. Share it with someone!",
+  ],
+  Neutral: [
+    "Take a deep breath and enjoy the moment.",
+    "A calm mind is a powerful mind.",
+    "Neutral days are perfect for small self-improvements!",
+  ],
+  Sad: [
+    "It's okay to feel this way. You're strong!",
+    "Take some time to rest and recharge.",
+    "Every storm passes. Keep going!",
+  ],
+};
+
+// Display a suggestion based on mood
+const displaySuggestion = (mood) => {
+  const suggestion = suggestions[mood];
+  suggestionBox.textContent = suggestion
+    ? suggestion[Math.floor(Math.random() * suggestion.length)]
+    : "No suggestions available.";
+};
 
 // Add a new mood entry
 addMoodBtn.addEventListener("click", () => {
@@ -21,6 +49,7 @@ addMoodBtn.addEventListener("click", () => {
 
   moodNote.value = ""; // Clear the note
   renderMoodLog();
+  displaySuggestion(mood); // Update suggestion
 });
 
 // Render the mood log

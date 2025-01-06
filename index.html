@@ -11,7 +11,7 @@
       <h1>Mood Tracker</h1>
       <div class="input-section">
         <label for="mood-select">Select Mood:</label>
-        <select id="mood-select">
+        <select id="mood-select" onchange="displaySuggestion(this.value)">
           <option value="Happy">😊 Happy</option>
           <option value="Neutral">😐 Neutral</option>
           <option value="Sad">😢 Sad</option>
@@ -21,6 +21,10 @@
         <textarea id="mood-note" placeholder="How was your day?"></textarea>
 
         <button id="add-mood-btn">Add Mood</button>
+      </div>
+
+      <div id="suggestion-box" class="suggestion-box">
+        Select a mood to see motivational suggestions.
       </div>
 
       <h2>Mood Log</h2>
